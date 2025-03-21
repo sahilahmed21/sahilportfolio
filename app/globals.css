@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 110, 172, 218; /* 6EACDA - Light blue for primary text */
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: 'Inter', sans-serif; /* Clean, modern font */
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - keeping minimal with your colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(3, 52, 110); /* 03346E - Medium blue */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(110, 172, 218); /* 6EACDA - Light blue */
+}
+
+/* Gradient text utility with your colors */
+.gradient-text {
+  @apply bg-gradient-to-r from-[rgb(2,21,38)] to-[rgb(90,99,156)] text-transparent bg-clip-text font-bold tracking-tight;
+}
+
+/* Section styling - minimal text focus */
+.section-container {
+  @apply py-20 px-8 md:px-24 max-w-6xl mx-auto;
+}
+
+/* Card styling - minimal text focus */
+.project-card {
+  @apply rounded-lg overflow-hidden transition-colors duration-300;
+  color: rgb(90, 99, 156); /* 5A639C - Purple-blue */
+}
+
+/* Button styling with your colors */
+.btn-primary {
+  @apply px-6 py-3 bg-transparent border text-[rgb(110,172,218)] rounded-md hover:bg-[rgb(110,172,218)]/10 transition-all duration-300 font-medium tracking-wide;
+  border-color: rgb(110, 172, 218); /* 6EACDA */
+}
+
+.btn-secondary {
+  @apply px-4 py-2 text-sm border text-[rgb(110,172,218)] rounded hover:bg-[rgb(110,172,218)]/10 transition-colors font-medium;
+  border-color: rgb(110, 172, 218); /* 6EACDA */
+}
+/* Header animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.animate-slideUpFadeIn {
+  animation: slideUpFadeIn 0.5s ease-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+/* Add these glitch animations for an extra futuristic effect */
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(1px, -3px);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-1px, 3px);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(3px, 1px);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-3px, -2px);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(2px, 2px);
+  }
+}
+
+/* Optional: subtle neon glow effect for your blue color */
+.neon-blue {
+  text-shadow: 0 0 5px rgba(110, 172, 218, 0.3), 
+               0 0 15px rgba(110, 172, 218, 0.2), 
+               0 0 30px rgba(110, 172, 218, 0.1);
+}
