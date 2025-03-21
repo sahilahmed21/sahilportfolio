@@ -12,7 +12,7 @@ export default function AboutMe({ isLoading }: AboutMeProps) {
                 <div className="absolute -left-3 h-6 rounded-full flex items-center justify-center transition-all duration-300 z-20 w-full md:w-1/2 pr-0 md:pr-12">
                     <div className="max-w-md">
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#373A40]">
-                            <span className="text-transparent bg-clip-text text-[#021526]">
+                            <span className="bg-gradient-to-r from-cyan-300 to-purple-400 text-transparent bg-clip-text">">
                                 Sahil Ahmed Khan
                             </span>
                         </h1>
