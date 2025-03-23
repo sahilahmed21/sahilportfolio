@@ -121,28 +121,44 @@ export default function Projects() {
     // Projects Data with Single Image
     const projects = [
         {
-            title: "FinIntel - Financial Banking App",
-            description: "A financial app offering AI-driven budgeting, expense tracking, and personalized guidance.",
-            link: "#",
-            website: "Website for Project Description",
-            tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Appwrite", "Dwolla", "Plaid", "ShadCN"],
-            image: "\Screenshot 2025-03-21 201111.png",
-        },
-        {
-            title: "FoodBuddy - Restaurant Review & Food Delivery App",
-            description: "A web app for restaurant reviews, discovery, and food delivery with role-based access and real-time updates.",
-            link: "#",
-            website: "Website for Project Description",
-            tags: ["React", "TypeScript", "Supabase", "TailwindCSS", "PostgreSQL", "Google OAuth"],
-            image: "\Screenshot 2025-03-21 201624.png",
-        },
-        {
             title: "Mentora - AI-Powered Study Assistant",
             description: "An intelligent study companion leveraging AI for personalized study planning, resource curation, and interactive assistance.",
             link: "https://mentora-kappa.vercel.app/home",
             website: "Website for Project Description",
             tags: ["Next.js 14", "Node.js", "Express", "TypeScript", "Tailwind CSS", "ShadCN", "Zustand", "MongoDB", "HuggingFace", "Tavily API", "Groq API"],
-            image: "\Screenshot 2025-03-21 200655.png",
+            image: "\\Screenshot 2025-03-21 200655.png",
+        },
+        {
+            title: "FinIntel - Financial Banking App",
+            description: "A financial app offering AI-driven budgeting, expense tracking, and personalized guidance.",
+            link: "https://fin-intel.vercel.app/sign-in",
+            website: "Website for Project Description",
+            tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Appwrite", "Dwolla", "Plaid", "ShadCN"],
+            image: "\\Screenshot 2025-03-21 201111.png",
+        },
+        {
+            title: "LeetCode Data Fetcher - Profile and Submission Analyzer",
+            description: "A Python script to fetch and analyze a user's LeetCode profile stats and submissions, saving them as a structured JSON file.",
+            link: "https://github.com/sahilahmed21/LeetCode-Data-Fetcher",
+            website: "Website for Project Description",
+            tags: ["Python", "Requests", "BeautifulSoup", "Selenium", "LeetCode API", "JSON"],
+            image: "\\Screenshot 2025-03-23 171143.png",
+        },
+        {
+            title: "FoodBuddy - Restaurant Review & Food Delivery App",
+            description: "A web app for restaurant reviews, discovery, and food delivery with role-based access and real-time updates.",
+            link: "https://vercel.com/sahilahmedpbuh-gmailcoms-projects/food-buddy",
+            website: "Website for Project Description",
+            tags: ["React", "TypeScript", "Supabase", "TailwindCSS", "PostgreSQL", "Google OAuth"],
+            image: "\\Screenshot 2025-03-21 201624.png",
+        },
+        {
+            title: "3D Minimalistic Portfolio - Interactive Developer Showcase",
+            description: "A visually stunning portfolio website with 3D elements, showcasing developer skills through interactive features and a responsive design.",
+            link: "https://portfolio-website-phi-smoky.vercel.app/",
+            website: "Website for Project Description",
+            tags: ["React.js", "Three.js", "React Three Fiber", "React Three Drei", "Node.js", "Tailwind CSS", "Email JS", "Vite"],
+            image: "\\Screenshot 2025-03-23 123457.png", // Placeholder; replace with an actual screenshot path
         },
         {
             title: "CrudCamp - Campground Review Platform",
@@ -150,8 +166,9 @@ export default function Projects() {
             link: "#",
             website: "Website for Project Description",
             tags: ["Node.js", "Express", "MongoDB", "Passport.js", "Bootstrap", "Mapbox"],
-            image: "\Screenshot 2025-03-21 201421.png",
+            image: "\\Screenshot 2025-03-21 201421.png",
         },
+
     ];
 
     // Projects Section
