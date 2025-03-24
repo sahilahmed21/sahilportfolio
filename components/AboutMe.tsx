@@ -17,7 +17,6 @@ export default function AboutMe({ isLoading }: AboutMeProps) {
                             </span>
                         </h1>
 
-                        <p className="text-lg mb-4 font-light text-[#686D76]">📍 Gwalior</p>
 
                         <div>
                             <a href="https://drive.google.com/drive/u/0/folders/1msfJga41RHrdgIxwTu_HM-aMoFvb-clX" className="flex items-center justify-center w-40 h-12 bg-transparent border font-medium tracking-wide rounded-full hover:bg-[#021526]/30 transition-all duration-300" style={{ borderColor: '#021526', color: '#021526', backgroundColor: '#373A40/20' }}>
@@ -34,6 +33,9 @@ export default function AboutMe({ isLoading }: AboutMeProps) {
                                 <br />and build the future. Also, I talk to code more than people—send help (or coffee)!
                             </p>
                         </div>
+                        <p className="text-lg mb-4 font-light text-[#686D76]">📍 Gwalior</p>
+                        <p className="text-lg mb-4 font-light text-[#686D76]">💻 Full-Stack Developer</p>
+
                         <div className="flex space-x-6 mb-8 mt-8">
                             <a href="sahilahmedpbuh@gmail.com" className="transition-colors hover:text-[#021526] flex items-center justify-center w-12 h-12 rounded-full bg-[#373A40]/20 hover:bg-[#021526]/30 text-[#686D76]" aria-label="Email">
                                 <Mail size={28} />
