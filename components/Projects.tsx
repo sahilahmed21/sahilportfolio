@@ -158,7 +158,7 @@ export default function Projects() {
             link: "https://portfolio-website-phi-smoky.vercel.app/",
             website: "Website for Project Description",
             tags: ["React.js", "Three.js", "React Three Fiber", "React Three Drei", "Node.js", "Tailwind CSS", "Email JS", "Vite"],
-            image: "\\Screenshot 2025-03-23 123457.png", // Placeholder; replace with an actual screenshot path
+            image: "\\oldportfolio.png", // Placeholder; replace with an actual screenshot path
         },
         {
             title: "CrudCamp - Campground Review Platform",

@@ -6,9 +6,9 @@ import "./globals.css"
 const orbitron = Orbitron({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Creative Developer Portfolio",
+  title: "SAHIL AHMED KHAN",
   description: "A portfolio showcasing creative development work",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

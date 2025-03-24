@@ -205,7 +205,7 @@ export default function Home() {
         <Education />
 
 
-        <Contact />
+        {/* <Contact /> */}
 
         <Footer />
       </div>

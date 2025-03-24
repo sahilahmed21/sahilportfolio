@@ -69,7 +69,7 @@ export default function AboutMe({ isLoading }: AboutMeProps) {
                 {/* Right Side: Photo Section */}
                 <div className="absolute -right-32 top-96 h-6 rounded-full flex items-center justify-center transition-all duration-300 z-20 w-full md:w-1/2 pl-0 md:pl-12">
                     <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-[#021526] shadow-2xl ring-4 ring-[#373A40]/50">
-                        <img src="/WhatsApp%20Image%202025-03-21%20at%2018.58.04_14f4f473.jpg" alt="Sahil Ahmed Khan" className="w-full h-full object-cover" />
+                        <img src="\WhatsApp Image 2025-03-24 at 16.15.15_f328f64b.jpg" alt="Sahil Ahmed Khan" className="w-full h-full object-cover" />
                     </div>
                 </div>
             </div>
