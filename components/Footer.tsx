@@ -12,7 +12,7 @@ export default function Footer() {
 
                     <div className="flex justify-center space-x-6">
                         <a
-                            href="mailto:your.email@example.com"
+                            href="mailto:sahilahmedpbuh@gmail.com"
                             className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:bg-[#373A40]/30"
                             style={{ color: '#F6F0F0' }}
                         >
@@ -20,7 +20,7 @@ export default function Footer() {
                             <span className="sr-only">Email</span>
                         </a>
                         <a
-                            href="https://github.com/yourusername"
+                            href="https://github.com/sahilahmed21"
                             className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:bg-[#373A40]/30"
                             style={{ color: '#F6F0F0' }}
                         >
@@ -28,7 +28,7 @@ export default function Footer() {
                             <span className="sr-only">GitHub</span>
                         </a>
                         <a
-                            href="https://linkedin.com/in/yourusername"
+                            href="https://linkedin.com/in/sahilahmedkhan"
                             className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:bg-[#373A40]/30"
                             style={{ color: '#F6F0F0' }}
                         >
@@ -36,12 +36,12 @@ export default function Footer() {
                             <span className="sr-only">LinkedIn</span>
                         </a>
                         <a
-                            href="https://instagram.com/yourusername"
+                            href="https://x.com/sahilkahmed"
                             className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 hover:bg-[#373A40]/30"
                             style={{ color: '#F6F0F0' }}
                         >
-                            <Instagram size={22} />
-                            <span className="sr-only">Instagram</span>
+                            <Twitter size={22} />
+                            <span className="sr-only">X</span>
                         </a>
                     </div>
                 </div>
