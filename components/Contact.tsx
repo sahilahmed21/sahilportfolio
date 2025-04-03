@@ -105,17 +105,17 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-20 px-8 md:px-24 max-w-6xl mx-auto">
+        <section id="contact" className="py-16 px-4 sm:px-8 md:px-24 max-w-6xl mx-auto">
             {alert.show && <Alert {...alert} />}
 
-            <h2 className="text-3xl font-bold mb-10" style={{ color: "#373A40" }}>
+            <h2 className="text-3xl font-bold mb-8 sm:mb-10" style={{ color: "#373A40" }}>
                 <span style={{ color: "#021526" }}>Contact me</span>
             </h2>
-            <div className="max-w-xl mx-auto bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-gray-800">
-                <p className="text-xl mb-6" style={{ color: "#F5F5F5" }}>
+            <div className="max-w-lg mx-auto bg-black/30 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-gray-800">
+                <p className="text-lg sm:text-xl mb-4 sm:mb-6" style={{ color: "#F5F5F5" }}>
                     If you're interested in working together or have any questions, feel free to reach out.
                 </p>
-                <form onSubmit={handleSubmit} className="space-y-4" style={{ color: "#F5F5F5" }}>
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" style={{ color: "#F5F5F5" }}>
                     <div>
                         <label htmlFor="name" className="block mb-2 text-sm font-medium" style={{ color: "#F5F5F5" }}>
                             Name

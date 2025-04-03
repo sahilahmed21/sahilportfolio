@@ -22,13 +22,13 @@ export default function Experience() {
     ]
 
     return (
-        <section id="work" className="py-20 px-6 md:px-12 relative">
-            <h2 className="text-3xl font-bold mb-12 pl-4" style={{ color: '#F5F5F5' }}>
+        <section id="work" className="py-16 px-4 sm:px-6 md:px-12 relative">
+            <h2 className="text-3xl font-bold mb-8 sm:mb-12 pl-2 sm:pl-4" style={{ color: '#F5F5F5' }}>
                 <span style={{ color: '#021526' }}>Experiences</span>
             </h2>
             <div className="flex flex-col md:flex-row gap-8">
                 {/* Left Timeline - With pleasing padding */}
-                <div className="relative pl-6 space-y-16 md:w-1/2">
+                <div className="relative pl-4 sm:pl-6 space-y-12 sm:space-y-16 md:w-1/2">
                     {/* Timeline Line with Animation */}
                     <div
                         className="absolute left-3 top-0 w-1 rounded-full transition-all duration-500 ease-in-out"
@@ -77,7 +77,7 @@ export default function Experience() {
                 </div>
 
                 {/* Right Side Creative Element - No blur */}
-                <div className="md:w-1/2 pt-16 md:pt-0 flex justify-end">
+                <div className="md:w-1/2 pt-12 sm:pt-16 md:pt-0 flex justify-end">
                     <div className="sticky top-20 w-80 z-10">
                         {/* Skill Visualization for currently hovered experience */}
                         <div

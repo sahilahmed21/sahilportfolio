@@ -6,10 +6,10 @@ interface AboutMeProps {
 
 export default function AboutMe({ isLoading }: AboutMeProps) {
     return (
-        <section id="about" className="min-h-screen flex flex-col justify-center px-8 md:px-24 py-20 max-w-7xl mx-auto">
+        <section id="about" className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-24 py-20 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-12">
                 {/* Left Side: AboutMe Content */}
-                <div className="absolute -left-3 h-6 rounded-full flex items-center justify-center transition-all duration-300 z-20 w-full md:w-1/2 pr-0 md:pr-12">
+                <div className="relative w-full md:w-1/2 pr-0 md:pr-12">
                     <div className="max-w-md">
 
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#373A40]">
@@ -79,8 +79,8 @@ export default function AboutMe({ isLoading }: AboutMeProps) {
                 </div>
 
                 {/* Right Side: Photo Section */}
-                <div className="absolute -right-32 top-96 h-6 rounded-full flex items-center justify-center transition-all duration-300 z-20 w-full md:w-1/2 pl-0 md:pl-12">
-                    <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-[#021526] shadow-2xl ring-4 ring-[#373A40]/50">
+                <div className="relative w-full md:w-1/2 pl-0 md:pl-12">
+                    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-[#021526] shadow-2xl ring-4 ring-[#373A40]/50">
                         <img src="/WhatsApp Image 2025-03-24 at 16.15.15_f328f64b.jpg" alt="Sahil Ahmed Khan" className="w-full h-full object-cover" />
                     </div>
                 </div>

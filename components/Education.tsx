@@ -36,12 +36,12 @@ export default function Education() {
 
 
     return (
-        <section id="education" className="py-20 px-6 md:px-12 relative">
-            <h2 className="text-3xl font-bold mb-12 pl-4" style={{ color: '#F5F5F5' }}>
+        <section id="education" className="py-20 px-4 sm:px-6 md:px-12 relative">
+            <h2 className="text-3xl font-bold mb-12 pl-2 sm:pl-4" style={{ color: '#F5F5F5' }}>
                 <span style={{ color: '#021526' }}>Education</span>
             </h2>
             {/* Left Timeline - Matching Experience structure */}
-            <div className="relative pl-6 space-y-16">
+            <div className="relative pl-4 sm:pl-6 space-y-16">
                 {/* Timeline Line with Animation */}
                 <div
                     className="absolute left-3 top-0 w-1 rounded-full transition-all duration-500 ease-in-out"

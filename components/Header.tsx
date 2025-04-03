@@ -40,7 +40,7 @@ export default function Header() {
 
     return (
         <header
-            className={`sticky top-0 w-full px-8 py-7 flex justify-between items-center transition-all duration-500 z-50 
+            className={`sticky top-0 w-full px-4 sm:px-8 py-5 sm:py-7 flex justify-between items-center transition-all duration-500 z-50 
             ${isScrolled
                     ? "bg-black/60 backdrop-blur-md border-b border-[rgb(110,172,218)]/10"
                     : "bg-transparent"}`}
@@ -80,8 +80,8 @@ export default function Header() {
             </button>
 
             {/* Desktop navigation with improved hover effects */}
-            <nav className="hidden md:block">
-                <ul className="flex space-x-10">
+            <nav className="hidden sm:block">
+                <ul className="flex space-x-6 sm:space-x-10">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <a

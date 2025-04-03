@@ -190,7 +190,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 px-4 sm:px-8">
         <Header />
 
         <AboutMe isLoading={!splineLoaded} />

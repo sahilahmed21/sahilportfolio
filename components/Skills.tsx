@@ -46,8 +46,6 @@ export default function Skills({ techStackRef }: SkillsProps) {
         { name: "AI Agents", icon: "🤖" }
     ];
 
-
-
     // Split skills into two arrays for two belts
     const firstBelt = skills.slice(0, Math.ceil(skills.length / 2))
     const secondBelt = skills.slice(Math.ceil(skills.length / 2))
@@ -55,18 +53,18 @@ export default function Skills({ techStackRef }: SkillsProps) {
     return (
         <section
             id="skills"
-            className="py-20 px-8 md:px-24 w-full mx-auto overflow-hidden bg-black/30 backdrop-blur-sm rounded-xl"
+            className="py-16 px-4 sm:px-8 md:px-24 w-full mx-auto overflow-hidden bg-black/30 backdrop-blur-sm rounded-xl"
         >
-            <h2 className="text-3xl font-bold mb-10 text-white text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-white text-center">
                 <span className="bg-gradient-to-r from-cyan-300 to-purple-400 text-transparent bg-clip-text">
                     What I work with
                 </span>
             </h2>
 
-            <div ref={techStackRef} className="space-y-8">
+            <div ref={techStackRef} className="space-y-6 sm:space-y-8">
                 {/* First belt: Left to Right */}
-                <div className="relative h-16 overflow-hidden">
-                    <div className={`${isMounted ? 'animate-belt-ltr' : ''} flex space-x-6`}>
+                <div className="relative h-12 sm:h-16 overflow-hidden">
+                    <div className={`${isMounted ? 'animate-belt-ltr' : ''} flex space-x-4 sm:space-x-6`}>
                         {[...firstBelt, ...firstBelt, ...firstBelt].map((tech, idx) => (
                             <div
                                 key={`first-${idx}`}
@@ -81,8 +79,8 @@ export default function Skills({ techStackRef }: SkillsProps) {
                 </div>
 
                 {/* Second belt: Right to Left */}
-                <div className="relative h-16 overflow-hidden">
-                    <div className={`${isMounted ? 'animate-belt-rtl' : ''} flex space-x-6`}>
+                <div className="relative h-12 sm:h-16 overflow-hidden">
+                    <div className={`${isMounted ? 'animate-belt-rtl' : ''} flex space-x-4 sm:space-x-6`}>
                         {[...secondBelt, ...secondBelt, ...secondBelt].map((tech, idx) => (
                             <div
                                 key={`second-${idx}`}
