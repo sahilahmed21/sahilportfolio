@@ -17,6 +17,23 @@ export default function Home() {
   const botHeadRef = useRef<any>(null)
   const [splineLoaded, setSplineLoaded] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768) // Common breakpoint for mobile
+    }
+
+    // Initial check
+    checkIsMobile()
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIsMobile)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
 
   // Function to find the Bot's head in the Spline scene
   const findBotHead = (splineApp: any) => {
@@ -134,82 +151,139 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const viewportWidth = window.innerWidth
-      const viewportHeight = window.innerHeight
+    // Only set up mouse movement tracking if not on mobile and Spline is loaded
+    if (!isMobile && splineLoaded) {
+      const handleMouseMove = (event: MouseEvent) => {
+        const viewportWidth = window.innerWidth
+        const viewportHeight = window.innerHeight
 
-      // Calculate normalized coordinates (-1 to 1)
-      const normalizedX = (event.clientX / viewportWidth) * 2 - 1
-      const normalizedY = (event.clientY / viewportHeight) * 2 - 1 // Normalized Y: -1 at top, 1 at bottom
+        // Calculate normalized coordinates (-1 to 1)
+        const normalizedX = (event.clientX / viewportWidth) * 2 - 1
+        const normalizedY = (event.clientY / viewportHeight) * 2 - 1 // Normalized Y: -1 at top, 1 at bottom
 
-      setMousePosition({ x: normalizedX, y: normalizedY })
+        setMousePosition({ x: normalizedX, y: normalizedY })
 
-      // Apply look-at behavior to the Bot's head if it exists
-      if (botHeadRef.current) {
-        const head = botHeadRef.current
+        // Apply look-at behavior to the Bot's head if it exists
+        if (botHeadRef.current) {
+          const head = botHeadRef.current
 
-        // Get initial rotation if available
-        const initialRotation = head._initialRotation || { x: 0, y: 0, z: 0 }
+          // Get initial rotation if available
+          const initialRotation = head._initialRotation || { x: 0, y: 0, z: 0 }
 
-        // Calculate limited rotation angles based on mouse position
-        // Increase the max rotation to make the head "look" more intensely
-        const maxRotation = 1 // Increased from 0.35 to 0.7 radians (about 40 degrees)
+          // Calculate limited rotation angles based on mouse position
+          // Increase the max rotation to make the head "look" more intensely
+          const maxRotation = 1 // Increased from 0.35 to 0.7 radians (about 40 degrees)
 
-        // Apply dampened rotation (smoother movement)
-        const dampFactor = 0.1 // Matches the damping of 10 in Spline editor (approximated)
+          // Apply dampened rotation (smoother movement)
+          const dampFactor = 0.1 // Matches the damping of 10 in Spline editor (approximated)
 
-        // Calculate target rotations relative to initial position
-        // Fix the up/down movement by adjusting how normalizedY affects rotation.x
-        const targetRotationX = initialRotation.x + normalizedY * maxRotation // Remove the negative sign to fix inversion
-        const targetRotationY = initialRotation.y + normalizedX * maxRotation // X movement remains the same
+          // Calculate target rotations relative to initial position
+          // Fix the up/down movement by adjusting how normalizedY affects rotation.x
+          const targetRotationX = initialRotation.x + normalizedY * maxRotation // Remove the negative sign to fix inversion
+          const targetRotationY = initialRotation.y + normalizedX * maxRotation // X movement remains the same
 
-        // Smoothly interpolate current rotation to target rotation
-        if (head.rotation) {
-          head.rotation.x += (targetRotationX - head.rotation.x) * dampFactor
-          head.rotation.y += (targetRotationY - head.rotation.y) * dampFactor
+          // Smoothly interpolate current rotation to target rotation
+          if (head.rotation) {
+            head.rotation.x += (targetRotationX - head.rotation.x) * dampFactor
+            head.rotation.y += (targetRotationY - head.rotation.y) * dampFactor
 
-          // Force update if needed
-          if (typeof head.updateMatrixWorld === "function") {
-            head.updateMatrixWorld(true)
+            // Force update if needed
+            if (typeof head.updateMatrixWorld === "function") {
+              head.updateMatrixWorld(true)
+            }
           }
         }
       }
-    }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [splineLoaded])
+      window.addEventListener("mousemove", handleMouseMove)
+      return () => window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [splineLoaded, isMobile])
+
+  // Dynamic class based on mobile/desktop view
+  const contentClasses = `relative z-10 px-4 sm:px-8 ${isMobile ? "mobile-theme" : ""}`
 
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Conditional rendering based on mobile or desktop */}
       <div className="fixed top-0 left-0 w-full h-full z-0">
-        <Spline
-          scene="https://prod.spline.design/3NjxCkeQcK-6PMyN/scene.splinecode"
-          onLoad={onSplineLoad}
-          style={{ width: "100%", height: "100%", opacity: 0.8 }}
-        />
+        {!isMobile ? (
+          // Desktop: Use Spline Model
+          <Spline
+            scene="https://prod.spline.design/3NjxCkeQcK-6PMyN/scene.splinecode"
+            onLoad={onSplineLoad}
+            style={{ width: "100%", height: "100%", opacity: 0.8 }}
+          />
+        ) : (
+          // Mobile: Use Background Image
+          <div
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/gradii-1920x1080.png')",
+              opacity: 0.9 // Slightly increased opacity for better visibility on mobile
+            }}
+          />
+        )}
       </div>
 
-      <div className="relative z-10 px-4 sm:px-8">
+      <div className={contentClasses}>
         <Header />
 
-        <AboutMe isLoading={!splineLoaded} />
+        <AboutMe isLoading={isMobile ? false : !splineLoaded} />
 
         <Skills techStackRef={techStackRef as React.RefObject<HTMLDivElement>} />
 
         <Experience />
 
-
         <Projects />
 
         <Education />
-
 
         {/* <Contact /> */}
 
         <Footer />
       </div>
+
+      {/* Add mobile-specific styles */}
+      {isMobile && (
+        <style jsx global>{`
+          /* Mobile theme styles - match the gradient image colors */
+          .mobile-theme {
+            color: rgba(240, 240, 255, 0.9); /* Light blue-white text */
+          }
+          
+          .mobile-theme h1, .mobile-theme h2 {
+            color: rgba(255, 255, 255, 0.95); /* Brighter white for headings */
+            text-shadow: 0 0 15px rgba(0, 100, 255, 0.3); /* Blue glow to match image */
+          }
+          
+          .mobile-theme h3, .mobile-theme h4 {
+            color: rgba(200, 230, 255, 0.9); /* Light blue for subheadings */
+          }
+          
+          .mobile-theme a {
+            color: rgba(255, 200, 120, 0.9); /* Orange/amber links to match bottom of gradient */
+          }
+          
+          .mobile-theme strong {
+            color: rgba(150, 200, 255, 0.95); /* Highlight text in light blue */
+          }
+          
+          /* Add subtle neon effect to important elements */
+          .mobile-theme .btn-primary, .mobile-theme .btn-secondary {
+            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 200, 150, 0.7); /* Amber/orange border */
+            text-shadow: 0 0 8px rgba(100, 150, 255, 0.4); /* Blue glow */
+          }
+          
+          /* Add depth to cards and containers */
+          .mobile-theme .project-card, .mobile-theme .section-container {
+            background-color: rgba(20, 30, 60, 0.4); /* Deep blue with transparency */
+            backdrop-filter: blur(5px); /* Blur behind elements for depth */
+            border: 1px solid rgba(100, 140, 240, 0.2); /* Subtle blue border */
+          }
+        `}</style>
+      )}
     </main>
   )
 }
-

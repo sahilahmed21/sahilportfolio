@@ -1,23 +1,69 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --foreground-rgb: 110, 172, 218; /* 6EACDA - Light blue for primary text */
+  /* Keep background variables if needed elsewhere, but body bg is changing */
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-  font-family: 'Inter', sans-serif; /* Clean, modern font */
-}
-
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  height: 100%; /* Needed for body min-height */
 }
+
+body {
+  color: rgb(var(--foreground-rgb));
+  font-family: 'Inter', sans-serif; /* Clean, modern font */
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+  margin: 0; /* Remove default margin */
+  position: relative; /* Needed for the ::before pseudo-element */
+  z-index: 0; /* Establish stacking context for ::before */
+
+  /* --- Start: New Static Gradient Background --- */
+  background-color: #10151d; /* Fallback color */
+
+  /* Layered Radial Gradients (Matches the example image) */
+  background-image:
+    /* Bottom-Right Orange/Brownish */
+    radial-gradient(ellipse at 75% 90%, #c87e43 0%, transparent 60%),
+    /* Top-Right Blue */
+    radial-gradient(circle at 85% 30%, #2a5a8c 0%, transparent 50%),
+    /* Center Dark */
+    radial-gradient(circle at 50% 40%, #10151d 0%, transparent 40%),
+    /* Top-Left Blue */
+    radial-gradient(circle at 15% 25%, #5c85ad 0%, transparent 60%);
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keep background fixed */
+  /* --- End: New Static Gradient Background --- */
+}
+
+/* --- Start: Noise Overlay --- */
+body::before {
+  content: "";
+  position: fixed; /* Cover viewport, stay fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind body content, above body background */
+
+  /* Path to your noise image in the public folder */
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+
+  opacity: 0.08; /* Adjust noise intensity (0.0 to 1.0) */
+  pointer-events: none; /* Prevent interference */
+}
+/* --- End: Noise Overlay --- */
+
 
 /* Custom scrollbar - keeping minimal with your colors */
 ::-webkit-scrollbar {
@@ -25,7 +71,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #000000; /* Match dark background */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -113,7 +159,7 @@ html {
 
 /* Optional: subtle neon glow effect for your blue color */
 .neon-blue {
-  text-shadow: 0 0 5px rgba(110, 172, 218, 0.3), 
-               0 0 15px rgba(110, 172, 218, 0.2), 
+  text-shadow: 0 0 5px rgba(110, 172, 218, 0.3),
+               0 0 15px rgba(110, 172, 218, 0.2),
                0 0 30px rgba(110, 172, 218, 0.1);
 }
