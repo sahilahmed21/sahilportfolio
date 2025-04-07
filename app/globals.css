@@ -1,11 +1,9 @@
-/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 110, 172, 218; /* 6EACDA - Light blue for primary text */
-  /* Keep background variables if needed elsewhere, but body bg is changing */
+  --foreground-rgb: 210, 230, 255; /* Lighter blue for better visibility on both backgrounds */
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
 }
@@ -23,24 +21,32 @@ body {
   position: relative; /* Needed for the ::before pseudo-element */
   z-index: 0; /* Establish stacking context for ::before */
 
-  /* --- Start: New Static Gradient Background --- */
-  background-color: #10151d; /* Fallback color */
+  /* Desktop background only - Mobile view uses the image instead */
+  @media (min-width: 768px) {
+    /* --- Start: Desktop Gradient Background --- */
+    background-color: #10151d; /* Fallback color */
 
-  /* Layered Radial Gradients (Matches the example image) */
-  background-image:
-    /* Bottom-Right Orange/Brownish */
-    radial-gradient(ellipse at 75% 90%, #c87e43 0%, transparent 60%),
-    /* Top-Right Blue */
-    radial-gradient(circle at 85% 30%, #2a5a8c 0%, transparent 50%),
-    /* Center Dark */
-    radial-gradient(circle at 50% 40%, #10151d 0%, transparent 40%),
-    /* Top-Left Blue */
-    radial-gradient(circle at 15% 25%, #5c85ad 0%, transparent 60%);
+    /* Layered Radial Gradients (Matches the example image) */
+    background-image:
+      /* Bottom-Right Orange/Brownish */
+      radial-gradient(ellipse at 75% 90%, #c87e43 0%, transparent 60%),
+      /* Top-Right Blue */
+      radial-gradient(circle at 85% 30%, #2a5a8c 0%, transparent 50%),
+      /* Center Dark */
+      radial-gradient(circle at 50% 40%, #10151d 0%, transparent 40%),
+      /* Top-Left Blue */
+      radial-gradient(circle at 15% 25%, #5c85ad 0%, transparent 60%);
 
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Keep background fixed */
-  /* --- End: New Static Gradient Background --- */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep background fixed */
+    /* --- End: Desktop Gradient Background --- */
+  }
+
+  /* Mobile background color (darker to improve contrast with text) */
+  @media (max-width: 767px) {
+    background-color: #080c14; /* Darker background for mobile */
+  }
 }
 
 /* --- Start: Noise Overlay --- */
@@ -63,7 +69,6 @@ body::before {
   pointer-events: none; /* Prevent interference */
 }
 /* --- End: Noise Overlay --- */
-
 
 /* Custom scrollbar - keeping minimal with your colors */
 ::-webkit-scrollbar {
@@ -101,14 +106,26 @@ body::before {
 
 /* Button styling with your colors */
 .btn-primary {
-  @apply px-6 py-3 bg-transparent border text-[rgb(110,172,218)] rounded-md hover:bg-[rgb(110,172,218)]/10 transition-all duration-300 font-medium tracking-wide;
+  @apply px-6 py-3 bg-transparent border text-[rgb(210,230,255)] rounded-md hover:bg-[rgb(110,172,218)]/10 transition-all duration-300 font-medium tracking-wide;
   border-color: rgb(110, 172, 218); /* 6EACDA */
 }
 
 .btn-secondary {
-  @apply px-4 py-2 text-sm border text-[rgb(110,172,218)] rounded hover:bg-[rgb(110,172,218)]/10 transition-colors font-medium;
+  @apply px-4 py-2 text-sm border text-[rgb(210,230,255)] rounded hover:bg-[rgb(110,172,218)]/10 transition-colors font-medium;
   border-color: rgb(110, 172, 218); /* 6EACDA */
 }
+
+/* Mobile specific text styles for better readability */
+@media (max-width: 767px) {
+  body {
+    color: rgb(230, 240, 255); /* Even lighter text for mobile */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility on image */
+  }
+}
+
 /* Header animations */
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -171,16 +171,14 @@ export default function Home() {
           const initialRotation = head._initialRotation || { x: 0, y: 0, z: 0 }
 
           // Calculate limited rotation angles based on mouse position
-          // Increase the max rotation to make the head "look" more intensely
           const maxRotation = 1 // Increased from 0.35 to 0.7 radians (about 40 degrees)
 
           // Apply dampened rotation (smoother movement)
           const dampFactor = 0.1 // Matches the damping of 10 in Spline editor (approximated)
 
           // Calculate target rotations relative to initial position
-          // Fix the up/down movement by adjusting how normalizedY affects rotation.x
-          const targetRotationX = initialRotation.x + normalizedY * maxRotation // Remove the negative sign to fix inversion
-          const targetRotationY = initialRotation.y + normalizedX * maxRotation // X movement remains the same
+          const targetRotationX = initialRotation.x + normalizedY * maxRotation
+          const targetRotationY = initialRotation.y + normalizedX * maxRotation
 
           // Smoothly interpolate current rotation to target rotation
           if (head.rotation) {
@@ -200,11 +198,8 @@ export default function Home() {
     }
   }, [splineLoaded, isMobile])
 
-  // Dynamic class based on mobile/desktop view
-  const contentClasses = `relative z-10 px-4 sm:px-8 ${isMobile ? "mobile-theme" : ""}`
-
   return (
-    <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
+    <main className="relative min-h-screen text-white overflow-x-hidden">
       {/* Conditional rendering based on mobile or desktop */}
       <div className="fixed top-0 left-0 w-full h-full z-0">
         {!isMobile ? (
@@ -220,13 +215,13 @@ export default function Home() {
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/gradii-1920x1080.png')",
-              opacity: 0.9 // Slightly increased opacity for better visibility on mobile
+              opacity: 0.8
             }}
           />
         )}
       </div>
 
-      <div className={contentClasses}>
+      <div className="relative z-10 px-4 sm:px-8">
         <Header />
 
         <AboutMe isLoading={isMobile ? false : !splineLoaded} />
@@ -243,47 +238,6 @@ export default function Home() {
 
         <Footer />
       </div>
-
-      {/* Add mobile-specific styles */}
-      {isMobile && (
-        <style jsx global>{`
-          /* Mobile theme styles - match the gradient image colors */
-          .mobile-theme {
-            color: rgba(240, 240, 255, 0.9); /* Light blue-white text */
-          }
-          
-          .mobile-theme h1, .mobile-theme h2 {
-            color: rgba(255, 255, 255, 0.95); /* Brighter white for headings */
-            text-shadow: 0 0 15px rgba(0, 100, 255, 0.3); /* Blue glow to match image */
-          }
-          
-          .mobile-theme h3, .mobile-theme h4 {
-            color: rgba(200, 230, 255, 0.9); /* Light blue for subheadings */
-          }
-          
-          .mobile-theme a {
-            color: rgba(255, 200, 120, 0.9); /* Orange/amber links to match bottom of gradient */
-          }
-          
-          .mobile-theme strong {
-            color: rgba(150, 200, 255, 0.95); /* Highlight text in light blue */
-          }
-          
-          /* Add subtle neon effect to important elements */
-          .mobile-theme .btn-primary, .mobile-theme .btn-secondary {
-            color: rgba(255, 255, 255, 0.9);
-            border-color: rgba(255, 200, 150, 0.7); /* Amber/orange border */
-            text-shadow: 0 0 8px rgba(100, 150, 255, 0.4); /* Blue glow */
-          }
-          
-          /* Add depth to cards and containers */
-          .mobile-theme .project-card, .mobile-theme .section-container {
-            background-color: rgba(20, 30, 60, 0.4); /* Deep blue with transparency */
-            backdrop-filter: blur(5px); /* Blur behind elements for depth */
-            border: 1px solid rgba(100, 140, 240, 0.2); /* Subtle blue border */
-          }
-        `}</style>
-      )}
     </main>
   )
 }
